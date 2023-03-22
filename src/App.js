@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Content from "./components/contents/Content";
+import Footer from "./components/template/Footer";
+import Navbar from "./components/template/Navbar";
 
 function App() {
+  const [getNavbarValue, setNavbarValue] = useState("");
+
+  const changeNavbarValue = () => {
+    return setNavbarValue("My Contact");
+  };
+
+  const name = () => {
+    return <h2>Alfian Vito Anggoro</h2>;
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar title={"AVA"} newValue={getNavbarValue} />
+      <button onClick={() => changeNavbarValue()}></button>
+      <Content name={name} />
+      <Footer year={"2023"} />
     </div>
   );
 }
