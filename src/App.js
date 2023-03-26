@@ -1,26 +1,18 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
 import "./App.css";
-import Content from "./components/contents/Content";
-import Footer from "./components/template/Footer";
-import Navbar from "./components/template/Navbar";
-
+import NotFound from "./Pages/NotFound";
 function App() {
-  const [getNavbarValue, setNavbarValue] = useState("");
-
-  const changeNavbarValue = () => {
-    return setNavbarValue("My Contact");
-  };
-
-  const name = () => {
-    return <h2>Alfian Vito Anggoro</h2>;
-  };
   return (
-    <div>
-      <Navbar title={"AVA"} newValue={getNavbarValue} />
-      <button onClick={() => changeNavbarValue()}></button>
-      <Content name={name} />
-      <Footer year={"2023"} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound/>} />
+      </Routes>
+    </Router>
   );
 }
 
